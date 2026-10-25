@@ -1,0 +1,41 @@
+# Dependencies and build artifacts
+node_modules/
+dist/
+dist-ssr/
+.rollback/
+
+# No lockfile on purpose (the workflow resolves dependencies with npm install)
+package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env (copy .env.example to .env)
+.env
+.env.local
+.env.*.local
+
+# Editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Handoff
+handoff.md
+
+# Differences guide (local-only, never part of the app repo)
+DIFFERENCES-FROM-S2E.md
+
+# Readable source of the team data and the agenda — only the masked public/alwaysondata.dat is served
+data/

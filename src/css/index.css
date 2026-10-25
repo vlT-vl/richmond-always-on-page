@@ -1,0 +1,115 @@
+/* index.css — design tokens + reset                                          */
+/*****************************************************************************/
+
+:root {
+  --s2e-cyan: #00afcb;
+  --s2e-navy: #00365c;
+  --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Courier New', ui-monospace, monospace;
+  --pad: clamp(1rem, 3vw, 2.5rem);
+
+  --bg:             #f4f8fb;
+  --bg-gradient:    linear-gradient(175deg, #ffffff 0%, #f1fbfd 30%, #c4ecf4 65%, #00afcb 100%);
+  --bg-elevated:    #ffffff;
+  --bg-elevated-2:  #f1f7fa;
+  --bg-hover:       rgba(0, 54, 92, 0.08);
+  --border:         rgba(0, 54, 92, 0.16);
+  --border-strong:  rgba(0, 54, 92, 0.3);
+  --text:           #00365c;
+  --text-muted:     #44657b;
+  --text-dim:       #6f8a9c;
+  --accent:         #00afcb;
+  --logo-navy:      #00365c;
+  --logo-cyan:      #007489;
+  --photo-border:   rgba(0, 116, 137, 0.6);
+  --sheen:          rgba(255, 255, 255, 0.95);
+  --net-line:       rgba(0, 116, 137, 0.3);
+  --net-node:       rgba(0, 116, 137, 0.6);
+  --net-pulse:      rgba(0, 175, 203, 0.7);
+
+}
+
+html[data-theme='dark'] {
+  --bg:             #000000;
+  --bg-gradient:    linear-gradient(175deg, #000000 0%, #02090f 30%, #001c30 65%, #00365c 100%);
+  --bg-elevated:    #0b1b28;
+  --bg-elevated-2:  #08141e;
+  --bg-hover:       rgba(255, 255, 255, 0.08);
+  --border:         rgba(255, 255, 255, 0.14);
+  --border-strong:  rgba(255, 255, 255, 0.28);
+  --text:           #e8f1f7;
+  --text-muted:     #a3bccb;
+  --text-dim:       #7392a6;
+  --accent:         #19c6e0;
+  --logo-navy:      #e8f1f7;
+  --logo-cyan:      #00afcb;
+  --photo-border:   rgba(255, 255, 255, 0.55);
+  --sheen:          rgba(25, 198, 224, 0.95);
+  --net-line:       rgba(25, 198, 224, 0.24);
+  --net-node:       rgba(25, 198, 224, 0.5);
+  --net-pulse:      rgba(150, 232, 246, 0.6);
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: clamp(8px, min(calc(100vw / 110), calc(100vh / 62)), 22px);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 10px;
+  background-color: var(--bg-elevated);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-elevated);
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: var(--border-strong);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,9 @@
+export const LOGO_MOVE_AT_MS = 2600
+export const LOGO_DONE_MS = 3700
+export const SHIFT_EXIT_MS = 11200
+export const SHIFT_GONE_MS = 12600
+export const SHIFT_DONE_MS = 12800
+export const EVENT_DONE_MS = 16800
+export const OFFICE_DONE_MS = 18700
+export const TOPBAR_IN_MS = SHIFT_EXIT_MS
+export const EXIT_MS = 1800

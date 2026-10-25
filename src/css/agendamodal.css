@@ -1,0 +1,202 @@
+/* agendamodal.css — animated agenda calendar modal                           */
+/*****************************************************************************/
+
+.agm-card {
+  max-width: 54rem;
+  --agm-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.agm-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 1rem 2rem 0.25rem;
+}
+
+.agm-tabs,
+.agm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.agm-tab,
+.agm-chip {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.agm-chip {
+  text-transform: none;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+}
+
+.agm-tab:hover,
+.agm-chip:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.agm-tab.is-active,
+.agm-chip.is-active {
+  color: var(--text);
+  background: var(--bg-hover);
+  border-color: var(--logo-cyan);
+}
+
+.agm-count {
+  margin-left: 0.25rem;
+  color: var(--logo-cyan);
+  font-weight: 700;
+}
+
+.agm-list {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.agm-row {
+  display: grid;
+  grid-template-columns: 6.5rem 2.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: agmRow 0.6s var(--agm-ease) both;
+  animation-delay: calc(0.1s + var(--i) * 0.05s);
+}
+
+.agm-row--past {
+  filter: saturate(0.6);
+}
+
+.agm-row--past .agm-name,
+.agm-row--past .agm-time {
+  color: var(--text-dim);
+}
+
+.agm-row--current {
+  border-left-color: var(--logo-cyan);
+  background: var(--bg-hover);
+}
+
+.agm-time {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.agm-dash {
+  color: var(--text-dim);
+}
+
+.agm-badge {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border: 1.5px solid var(--photo-border);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--logo-cyan);
+  animation: agmBadge 0.6s var(--agm-ease) both;
+  animation-delay: calc(0.25s + var(--i) * 0.05s);
+}
+
+.agm-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.agm-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.agm-sub,
+.agm-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.agm-desc {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.agm-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.agm-row--current .agm-tag {
+  color: var(--logo-cyan);
+}
+
+.agm-empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+@keyframes agmRow {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes agmBadge {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .agm-controls,
+  .agm-list {
+    padding-inline: 1rem;
+  }
+
+  .agm-row {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+  }
+
+  .agm-time {
+    grid-column: 1 / -1;
+  }
+
+  .agm-tag {
+    display: none;
+  }
+}

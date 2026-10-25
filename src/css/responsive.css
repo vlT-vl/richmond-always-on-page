@@ -1,0 +1,420 @@
+/* responsive.css — phones and tablets in portrait: one scrolling column      */
+/*****************************************************************************/
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.flip-half {
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: clamp(14px, calc(9px + 1.6vw), 17px);
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .page {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .fit {
+    margin-top: 0;
+    flex: none;
+    overflow: visible;
+  }
+
+  .fit-inner {
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .stage {
+    padding-bottom: 2rem;
+  }
+
+  .shift-layer {
+    position: absolute;
+    inset: auto 0 auto 0;
+    top: var(--shift-top, 60vh);
+    align-items: flex-start;
+  }
+
+  /* top bar: three clearly separated bands, all centered — clock and date, agenda pill, weather and buttons */
+  .topbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    text-align: center;
+  }
+
+  .topbar-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  .clock-block {
+    --clock-dw: min(calc((100vw - 2 * var(--pad)) / 10), 1.9rem);
+  }
+
+  .agp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    height: auto;
+    max-width: 100%;
+    gap: 0.3rem;
+    margin-top: 0;
+    padding: 0.75rem 0 0;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .agp::before {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 1px;
+    transform-origin: left center;
+    animation-name: eventRule;
+  }
+
+  .agp-row {
+    justify-content: center;
+  }
+
+  .agp-text {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .agp-slot {
+    display: block;
+    max-width: 100%;
+    padding: 0.3rem 0 0;
+  }
+
+  .agp-slot::before {
+    top: 0;
+    bottom: auto;
+    left: 25%;
+    right: 25%;
+    width: auto;
+    height: 1px;
+    transform-origin: left center;
+    animation-name: eventRule;
+  }
+
+  .topbar-right {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0.9rem;
+    position: relative;
+  }
+
+  .topbar-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: eventRule 0.8s cubic-bezier(0.76, 0, 0.24, 1) 0.6s both;
+  }
+
+  .topbar:not(.is-in) .topbar-right::before {
+    animation-play-state: paused;
+  }
+
+  .weather {
+    justify-content: center;
+  }
+
+  .weather-text {
+    align-items: center;
+  }
+
+  .topbar-btns {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .round-btn {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  /* logo and event title */
+  .stage-logo {
+    width: clamp(15rem, 72vw, 26rem);
+  }
+
+  .event-row {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .event-divider {
+    width: 3rem;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation-name: eventRule;
+  }
+
+  .event-title {
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.22em;
+  }
+
+  /* section titles */
+  .office-title {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.14em;
+  }
+
+  .office-rule {
+    min-width: 0.75rem;
+  }
+
+  /* welcome card: badge above the text, everything centered */
+  .wl-id {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .wl-layer {
+    align-items: center;
+    text-align: center;
+  }
+
+  .wl-sub-row {
+    justify-content: center;
+    gap: 0.15em 0.8em;
+  }
+
+  /* team cards centered */
+  .team-inner {
+    align-items: center;
+  }
+
+  .team-visuals {
+    justify-content: center;
+  }
+
+  .team-info {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .wl-layer {
+    max-width: min(40rem, calc(100vw - 2 * var(--pad) - 4.5rem));
+  }
+
+  .wl-body {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .wl-id {
+    max-width: 100%;
+  }
+
+  /* attendee column: the vertical rule becomes a horizontal one on top */
+  .att {
+    width: 100%;
+    padding-top: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .att-block {
+    align-items: center;
+  }
+
+  .att-line {
+    text-align: center;
+  }
+
+  .team-x-pair {
+    justify-content: center;
+  }
+
+  .att-rule {
+    display: none;
+  }
+
+  /* welcome card: the vertical rule becomes a horizontal one between the two blocks */
+  .wl-rule {
+    display: block;
+    align-self: center;
+    width: min(60%, 14rem);
+    height: 2px;
+    opacity: 1;
+    background: linear-gradient(90deg, var(--logo-cyan), var(--logo-navy));
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation-name: eventRule;
+  }
+}
+
+@media (max-width: 560px) {
+  .weather-temp {
+    font-size: 2.1rem;
+  }
+
+  .weather-meta {
+    font-size: 0.7rem;
+  }
+
+  .wl-name {
+    font-size: 1.7rem;
+  }
+
+  .wl-company {
+    font-size: 1.8rem;
+  }
+
+  .wl-sub {
+    font-size: 0.95rem;
+  }
+
+  .wl-item,
+  .wl-time--big {
+    font-size: 1rem;
+  }
+
+  /* modals */
+  .amo-overlay {
+    padding: 0.75rem;
+  }
+
+  .amo-card {
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+
+  .amo-header {
+    padding: 1.1rem 1.1rem 1rem;
+  }
+
+  .amo-body {
+    padding: 1.25rem 1.1rem;
+    gap: 1.25rem;
+  }
+
+  .amo-close {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .amo-title {
+    font-size: 1.05rem;
+  }
+
+  .amo-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .amo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .amo-field-label {
+    font-size: 0.65rem;
+  }
+
+  .amo-field-value {
+    font-size: 0.85rem;
+  }
+
+  .amo-notice {
+    font-size: 0.8rem;
+  }
+
+  .amo-logos {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .amo-rl-logo {
+    width: min(72%, 15rem);
+  }
+
+  .aow {
+    font-size: 1.4rem;
+  }
+
+  .agm-card {
+    max-width: 100%;
+  }
+
+  .agm-controls,
+  .agm-list {
+    padding-inline: 0.9rem;
+  }
+
+  .agm-row {
+    padding: 0.65rem 0.75rem;
+    gap: 0.5rem 0.7rem;
+  }
+
+  .agm-name {
+    font-size: 1rem;
+  }
+
+  .agm-sub,
+  .agm-desc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 900px) and (pointer: coarse) {
+  .agm-tab,
+  .agm-chip {
+    padding-block: 0.55rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .team-stage {
+    transition: height 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .team-stage > .team-focus {
+    align-items: start;
+  }
+}

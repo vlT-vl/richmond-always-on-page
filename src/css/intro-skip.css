@@ -1,0 +1,104 @@
+/* intro-skip.css — final state without entrance animations (already played)  */
+/*****************************************************************************/
+
+.intro-skip .logo-intro {
+  transform: none;
+  transition: none;
+}
+
+.intro-skip .s2e-part {
+  animation: none;
+}
+
+.intro-skip .net-edge {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+.intro-skip .net-node {
+  animation: none;
+}
+
+.intro-skip .net-node--breath {
+  animation: netBreath var(--b) ease-in-out infinite alternate var(--p);
+}
+
+.intro-skip .flip-digit,
+.intro-skip .flip-sep,
+.intro-skip .clock-ico,
+.intro-skip .weather-text,
+.intro-skip .weather-icon,
+.intro-skip .round-btn {
+  animation: none;
+}
+
+.intro-skip .rl-wipe,
+.intro-skip .rl-facet,
+.intro-skip .event-divider,
+.intro-skip .event-word,
+.intro-skip .event-rule {
+  animation: none;
+  transform: none;
+  opacity: 1;
+}
+
+.intro-skip .office-word,
+.intro-skip .office-rule {
+  animation: none;
+  transform: none;
+}
+
+.intro-skip .team-photo-wrap {
+  animation: none;
+  clip-path: none;
+  transform: none;
+  opacity: 1;
+}
+
+.intro-skip .team-emblem .em {
+  animation: none;
+}
+
+.intro-skip .team-line > span {
+  animation: none;
+  transform: none;
+}
+
+.intro-skip .att-line > span {
+  animation: none;
+  transform: none;
+}
+
+.intro-skip .att-rule {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.intro-skip .wl-line > span,
+.intro-skip .wl-badge,
+.intro-skip .wl-rule {
+  animation: none;
+  transform: none;
+  opacity: 1;
+}
+
+.intro-skip .wl-badge {
+  clip-path: none;
+}
+
+.intro-skip .agp-row {
+  animation: none;
+  transform: none;
+}
+
+.intro-skip .agp::before,
+.intro-skip .agp-slot::before {
+  animation: none;
+  transform: none;
+}
+
+.intro-skip .topbar-right::before {
+  animation: none;
+  transform: none;
+}

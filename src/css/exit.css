@@ -1,0 +1,143 @@
+/* exit.css — motion exit of every element before the loop restarts           */
+/*****************************************************************************/
+
+.page.is-exiting {
+  --ex-io: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page.is-exiting .topbar {
+  animation: exTop 0.7s var(--ex-io) 0.3s both;
+}
+
+.page.is-exiting .logo-intro {
+  animation: exLogo 0.8s var(--ex-io) 0.5s both;
+}
+
+.page.is-exiting .agp::before,
+.page.is-exiting .agp-slot::before {
+  animation: exRuleY 0.5s var(--ex-io) 0.1s both;
+}
+
+.page.is-exiting .agp-row {
+  animation: exLine 0.6s var(--ex-io) 0.1s both;
+  animation-delay: 0.1s !important;
+}
+
+.page.is-exiting .net {
+  animation: exNet 0.9s ease 0.7s both;
+}
+
+.page.is-exiting .rl-wipe {
+  transform-origin: right center;
+  animation: exRuleX 0.7s var(--ex-io) calc(0.3s + var(--d, 0s) * 0.12) both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .rl-facet {
+  animation: exFade 0.5s ease 0.3s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .event-word {
+  animation: exLine 0.7s var(--ex-io) calc(0.25s + var(--d, 0s) * 0.12) both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .event-divider {
+  animation: exRuleY 0.6s var(--ex-io) 0.3s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .event-rule {
+  animation: exRuleX 0.7s var(--ex-io) 0.35s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .office-word {
+  animation: exLine 0.7s var(--ex-io) calc(0.15s + var(--d, 0s) * 0.12) both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .office-rule {
+  animation: exRuleX 0.7s var(--ex-io) 0.2s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .wl-line > span {
+  animation: exLine 0.7s var(--ex-io) calc(0.1s + var(--d, 0s) * 0.12) both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .wl-badge {
+  animation: exPhoto 0.7s var(--ex-io) 0.1s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .wl-rule {
+  animation: exRuleY 0.6s var(--ex-io) 0.15s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .team-line > span,
+.page.is-exiting .att-line > span {
+  animation: exLine 0.7s var(--ex-io) calc(0.05s + var(--d, 0s) * 0.12) both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .team-photo-wrap {
+  animation: exPhoto 0.7s var(--ex-io) 0.05s both;
+  animation-play-state: running;
+}
+
+.page.is-exiting .team-emblem {
+  animation: exFade 0.6s ease 0.1s both;
+}
+
+.page.is-exiting .team-focus {
+  animation: exFade 0.5s ease both;
+}
+
+.page.is-exiting .att-rule {
+  animation: exRuleY 0.6s var(--ex-io) 0.1s both;
+  animation-play-state: running;
+}
+
+@keyframes exLine {
+  from { transform: translateY(0); }
+  to   { transform: translateY(130%); }
+}
+
+@keyframes exRuleX {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+@keyframes exRuleY {
+  from { opacity: 1; transform: scaleY(1); }
+  to   { opacity: 0; transform: scaleY(0); }
+}
+
+@keyframes exFade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes exPhoto {
+  from { clip-path: circle(72% at 50% 50%); transform: scale(1); opacity: 1; }
+  to   { clip-path: circle(0% at 50% 50%); transform: scale(0.85); opacity: 0; }
+}
+
+@keyframes exTop {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-1.5rem); }
+}
+
+@keyframes exLogo {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(-1.5rem) scale(0.96); }
+}
+
+@keyframes exNet {
+  from { opacity: 0.27; }
+  to   { opacity: 0; }
+}

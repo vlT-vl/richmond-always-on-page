@@ -1,0 +1,180 @@
+/* weather.css — current weather widget + animated icons                      */
+/*****************************************************************************/
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.weather--empty {
+  min-width: 8rem;
+  min-height: 3.5rem;
+}
+
+.weather-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+  animation: wxText 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 0.3s;
+}
+
+.weather-temp {
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.weather-meta {
+  margin-top: 0.2rem;
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.weather-icon {
+  position: relative;
+  width: clamp(3rem, 5.5vw, 4.5rem);
+  height: clamp(3rem, 5.5vw, 4.5rem);
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  animation: wxIcon 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: 0.5s;
+}
+
+.weather-glyph {
+  width: 100%;
+  height: 100%;
+}
+
+.weather-icon--clear .weather-glyph {
+  color: #f5a623;
+  animation: sunSpin 24s linear infinite, sunGlow 3s ease-in-out infinite;
+}
+
+.weather-icon--clear.is-night .weather-glyph {
+  color: var(--text);
+  animation: moonFloat 4s ease-in-out infinite;
+}
+
+.weather-icon--partly .weather-glyph,
+.weather-icon--cloud .weather-glyph {
+  animation: cloudDrift 6s ease-in-out infinite;
+}
+
+.weather-icon--fog .weather-glyph {
+  animation: fogFade 4s ease-in-out infinite;
+}
+
+.weather-icon--drizzle .weather-glyph,
+.weather-icon--rain .weather-glyph {
+  animation: cloudDrift 5s ease-in-out infinite;
+}
+
+.weather-icon--snow .weather-glyph {
+  animation: snowSway 3.5s ease-in-out infinite;
+}
+
+.weather-icon--storm .weather-glyph {
+  animation: stormFlash 3.2s ease-in-out infinite;
+}
+
+.weather-drops {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 4%;
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.weather-drops i {
+  width: 3px;
+  height: 0.55rem;
+  border-radius: 2px;
+  background: var(--text);
+  opacity: 0;
+  animation: dropFall 1.1s linear infinite;
+}
+
+.weather-drops i:nth-child(2) { animation-delay: 0.35s; }
+.weather-drops i:nth-child(3) { animation-delay: 0.7s; }
+
+.weather-icon--snow .weather-drops i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text);
+  animation-duration: 2s;
+}
+
+.weather-icon--storm .weather-drops i {
+  background: var(--text);
+}
+
+@keyframes sunSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sunGlow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(245, 166, 35, 0.35)); }
+  50%      { filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.8)); }
+}
+
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-4px) rotate(4deg); }
+}
+
+@keyframes cloudDrift {
+  0%, 100% { transform: translateX(-3px); }
+  50%      { transform: translateX(3px); }
+}
+
+@keyframes fogFade {
+  0%, 100% { opacity: 0.55; transform: translateX(-3px); }
+  50%      { opacity: 1; transform: translateX(3px); }
+}
+
+@keyframes snowSway {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+@keyframes stormFlash {
+  0%, 82%, 100% { filter: none; }
+  86%           { filter: drop-shadow(0 0 12px #f5d44a) brightness(1.25); }
+  90%           { filter: none; }
+  94%           { filter: drop-shadow(0 0 12px #f5d44a) brightness(1.25); }
+}
+
+@keyframes dropFall {
+  0%   { transform: translateY(-60%); opacity: 0; }
+  20%  { opacity: 0.9; }
+  100% { transform: translateY(90%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-glyph,
+  .weather-drops i,
+  .flip-sep i {
+    animation: none !important;
+  }
+}
+
+@keyframes wxText {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes wxIcon {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
